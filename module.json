@@ -16,7 +16,7 @@
 		"maximum": "12",
 		"verified": "12.349"
 	},
-	"esmodules": ["src/chronoball-main/mjs"],
+	"esmodules": ["src/chronoball-main.mjs"],
 	"relationships": {
 		"systems": [
 			{
