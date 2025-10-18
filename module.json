@@ -67,7 +67,7 @@
 			"name": "Chronoball",
 			"sorting": "a",
 			"color": "#348f2d",
-			"packs": ["items", "scenes"]
+			"packs": ["Items", "Scenes"]
 		}
 	],
 	"bugs": "https://github.com/thatlonelybugbear/Chronoball/issues",
