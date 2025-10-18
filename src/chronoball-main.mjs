@@ -1,9 +1,11 @@
 import { createDialog } from './chronoball-actions.mjs';
 import Constants from './chronoball-constants.mjs';
 import Settings from './chronoball-settings.mjs';
+export let transferEverything, createItemPile, giveItem, addItems;
 
 Hooks.once('init', registerOnInit);
 Hooks.on('getSceneControlButtons', showTokenControlsButton);
+Hooks.on('ready', initializeVariables);
 
 function registerOnInit() {
   return new Settings().registerSettings();
@@ -25,4 +27,9 @@ function showTokenControlsButton(controls) {
       active,
     });
   }
+}
+
+function initializeVariables() {
+  if (!transferEverything || !createItemPile || !addItems) ui.notifications.error(Constants.MODULE_NAME + ': Make sure that Item Piles (and Item Piles d&d5e) module is enabled');
+  ({ transferEverything, createItemPile, giveItem, addItems } = game.itempiles?.API || {});
 }
