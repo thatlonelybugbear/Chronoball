@@ -61,11 +61,11 @@
 				"packs": ["items"]
 			}
 		],
-		"bugs": "https://github.com/thatlonelybugbear/chronoball/issues",
-		"url": "https://github.com/thatlonelybugbear/chronoball",
-		"license": "https://raw.githubusercontent.com/thatlonelybugbear/chronoball/main/LICENSE",
-		"manifest": "https://github.com/thatlonelybugbear/chronoball/releases/latest/download/module.json",
-		"download": "https://github.com/thatlonelybugbear/chronoball/releases/download/v12.444.1/module.zip",
-		"changelog": "https://raw.githubusercontent.com/thatlonelybugbear/chronoball/main/Changelog.md"
+		"bugs": "https://github.com/thatlonelybugbear/Chronoball/issues",
+		"url": "https://github.com/thatlonelybugbear/Chronoball",
+		"license": "https://raw.githubusercontent.com/thatlonelybugbear/Chronoball/main/LICENSE",
+		"manifest": "https://github.com/thatlonelybugbear/Chronoball/releases/latest/download/module.json",
+		"download": "https://github.com/thatlonelybugbear/Chronoball/releases/download/v12.444.1/module.zip",
+		"changelog": "https://raw.githubusercontent.com/thatlonelybugbear/Chronoball/main/Changelog.md"
 	}
 }
