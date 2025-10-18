@@ -1,17 +1,10 @@
 import Constants from './chronoball-constants.mjs';
 import Settings from './chronoball-settings.mjs';
+import { transferEverything, createItemPile, giveItem, addItems } from './chronoball-main.mjs'
 
 const settings = new Settings();
 
 export async function createDialog() {}
-
-const { transferEverything, createItemPile, giveItem, addItems } = game.itempiles?.API || {};
-
-const ballTokenUuid = canvas.tokens.placeables.find((t) => t.identifier === 'chronoball')?.document.uuid;
-const ballToken = fromUuidSync(ballTokenUuid)?.object;
-
-const ballItem = await fromUuid('Compendium.chronoball.Items.Item.<changeUUID>'); // @to-do: replace after creating the compendium item;
-const ballItemData = game.items.fromCompendium(ballItem);
 
 async function createBall() {
 	const ballTokenUuid = canvas.tokens.placeables.find((t) => t.identifier === 'chronoball')?.document.uuid;
@@ -20,7 +13,7 @@ async function createBall() {
 }
 
 async function dropBall({ spot, actor }) {
-	const ballItem = actor.items.find((i) => i.identifier === 'chronoball');
+	const ballItem = actor?.items.find((i) => i.identifier === 'chronoball') ?? await fromUuid(Constants.BALL_UUID);
 	const ballItemData = game.items.fromCompendium(ballItem);
 	const ownership = game.users.map((u) => ({ [u.id]: 3 }));
 	const options = {
