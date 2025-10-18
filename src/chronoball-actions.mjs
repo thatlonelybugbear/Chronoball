@@ -14,26 +14,26 @@ const ballItem = await fromUuid('Compendium.chronoball.Items.Item.<changeUUID>')
 const ballItemData = game.items.fromCompendium(ballItem);
 
 async function createBall() {
+	const ballTokenUuid = canvas.tokens.placeables.find((t) => t.identifier === 'chronoball')?.document.uuid;
 	const spot = { center: { x: 1800, y: 3200 } };
 	if (!ballTokenUuid) return dropBall({ spot });
 }
 
 async function dropBall({ spot, actor }) {
-	const ball = ballToken ?? ballItem; //fromUuidSync('Actor.VObr5IfrxkWYz0DX.Item.vcNGXWcbCpEqoT2V');
-	const ballData = game.items.fromCompendium(ball);
+	const ballItem = actor.items.find((i) => i.identifier === 'chronoball');
+	const ballItemData = game.items.fromCompendium(ballItem);
 	const ownership = game.users.map((u) => ({ [u.id]: 3 }));
 	const options = {
 		position: { x: spot.center.x, y: spot.center.y },
 		sceneId: game.scenes.current.id,
-		tokenOverrides: { name: ballData.name, img: ballData.img },
+		tokenOverrides: { name: ballItemData.name, img: ballItemData.img },
 		actorOverrides: { ownership },
-		items: [ballData],
+		items: [ballItemData],
 		createActor: false,
-		pileActorName: ballData.name,
+		pileActorName: ballItemData.name,
 		pileSettings: { type: game.itempiles.pile_types.PILE },
 	};
 	await createItemPile(options);
-	if (actor) await actor.update({ 'system.attributes.hp.temp': 0 });
 	return;
 }
 
@@ -41,10 +41,11 @@ async function giveBall({ target, source }) {
 	const item = source.items.find((i) => i.identifier === 'chronoball');
 	await addItems(target, [item]);
 	await item?.delete();
-	// await source.update({ 'system.attributes.hp.temp': 0 });
 }
 
 async function throwBall({ actor, token }) {
+	const ballItem = actor.items.find((i) => i.identifier === 'chronoball');
+	const ballItemData = game.items.fromCompendium(ballItem);
 	const interceptionRange = settings.interceptionRange;
 	const interceptionDistance = interceptionRange * canvas.grid.size;
 	const findNearby = canvas.tokens.quadtree.getObjects(token.bounds.pad(interceptionDistance - 1)).filter((t) => t !== token && t?.actor?.getFlag(Constants.MODULE_ID, Constants.TEAM_FLAG) !== actor.getFlag(Constants.MODULE_ID, Constants.TEAM_FLAG));
