@@ -52,14 +52,22 @@
 			"type": "Item",
 			"module": "chronoball",
 			"sorting": "m"
+		},
+		{
+			"name": "Scenes",
+			"label": "Scenes",
+			"path": "packs/scenes",
+			"type": "Scene",
+			"module": "chronoball",
+			"sorting": "m"
 		}
 	],
 	"packfolders": [
 		{
-			"name": "Bugbears Scripts",
+			"name": "Chronoball",
 			"sorting": "a",
 			"color": "#348f2d",
-			"packs": ["items"]
+			"packs": ["items", "scenes"]
 		}
 	],
 	"bugs": "https://github.com/thatlonelybugbear/Chronoball/issues",
