@@ -1,0 +1,71 @@
+{
+	"id": "chronoball",
+	"title": "Chronoball",
+	"description": "American football emulator for Foundy VTT",
+	"version": "12.444.1",
+	"authors": [
+		{
+			"name": "thatlonelybugbear",
+			"url": "https://github.com/thatlonelybugbear",
+			"discord": "thatlonelybugbear#4394",
+			"ko-fi": "https://ko-fi.com/thatlonelybugbear"
+		}
+	],
+	"compatibility": {
+		"minimum": "12",
+		"maximum": "12",
+		"verified": "12.349"
+	},
+	"esmodules": ["src/chronoball-main/mjs"],
+	"relationships": {
+		"systems": [
+			{
+				"id": "dnd5e",
+				"type": "system",
+				"compatibility": {
+					"minimum": "5.1.2",
+					"maximum": "5.2",
+					"verified": "5.1.9"
+				}
+			}
+		],
+		"requires": [
+			{
+				"id": "item-piles",
+				"type": "module"
+			},
+			{
+				"id": "sequencer",
+				"type": "module"
+			},
+			{
+				"id": "itempilesdnd5e",
+				"type": "module"
+			}
+		],
+		"packs": [
+			{
+				"name": "Items",
+				"label": "Items",
+				"path": "packs/items",
+				"type": "Item",
+				"module": "chronoball",
+				"sorting": "m"
+			}
+		],
+		"packfolders": [
+			{
+				"name": "Bugbears Scripts",
+				"sorting": "a",
+				"color": "#348f2d",
+				"packs": ["items"]
+			}
+		],
+		"bugs": "https://github.com/thatlonelybugbear/chronoball/issues",
+		"url": "https://github.com/thatlonelybugbear/chronoball",
+		"license": "https://raw.githubusercontent.com/thatlonelybugbear/chronoball/main/LICENSE",
+		"manifest": "https://github.com/thatlonelybugbear/chronoball/releases/latest/download/module.json",
+		"download": "https://github.com/thatlonelybugbear/chronoball/releases/download/v12.444.1/module.zip",
+		"changelog": "https://raw.githubusercontent.com/thatlonelybugbear/chronoball/main/Changelog.md"
+	}
+}
