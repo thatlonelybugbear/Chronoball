@@ -55,7 +55,8 @@ async function dropBall({ spot, actor, create = false }) {
 	let ballItem;
 	if (create) {
 		for (const token of canvas.tokens.placeables) await token.actor?.items.find((i) => i.identifier === 'chronoball')?.delete();
-		ballItem = await fromUuid(Constants.BALL_UUID);
+		canvas.tokens.placeables.filter((t)=>t.name==='Chronoball').forEach((t) => t.document.delete());
+		ballItem = game.items.getName('Chronoball') ?? await fromUuid(Constants.BALL_UUID);
 	}
 	else {
 		ballItem = actor?.items.find((i) => i.identifier === 'chronoball');
