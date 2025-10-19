@@ -1,0 +1,7 @@
+2025/10/19-03:43:13.097 705c Recovering log #12
+2025/10/19-03:43:13.103 705c Delete type=0 #12
+2025/10/19-03:43:13.104 705c Delete type=3 #10
+2025/10/19-03:43:59.645 13d0 Level-0 table #17: started
+2025/10/19-03:43:59.645 13d0 Level-0 table #17: 0 bytes OK
+2025/10/19-03:43:59.646 13d0 Delete type=0 #15
+2025/10/19-03:43:59.647 13d0 Manual compaction at level-0 from '!items!w0XAyjVj70oWnHMH' @ 72057594037927935 : 1 .. '!items.effects!w0XAyjVj70oWnHMH.RAl7ZA6ke39XP5ff' @ 0 : 0; will stop at (end)
