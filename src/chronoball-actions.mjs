@@ -4,7 +4,38 @@ import { transferEverything, createItemPile, giveItem, addItems } from './chrono
 
 const settings = new Settings();
 
-export async function createDialog() {}
+export async function createDialog() {
+	const { createFormGroup, createNumberInput } = foundry.applications.fields;
+
+	const actor = game.user.character || canvas.tokens.controlled?.[0]?.actor;
+	const isCarrier = actor?.items.find((i) => i.identifier === 'chronoball');
+
+	const buttons = [
+		{ type: 'submit', action: 'create', label: 'Create Ball', hidden: game.user.isGM },
+		{ type: 'submit', action: 'drop', label: 'Drop Ball', disabled: !isCarrier },
+		{ type: 'submit', action: 'pick', label: 'Pick Ball', disabled: isCarrier },
+		{ type: 'submit', action: 'throw', label: 'Throw Ball', disabled: !isCarrier },
+	];
+
+	const callback = (event, button) => {
+		return { mode: button.dataset.action };
+	}
+	const { availLeft, availTop, availHeight, availWidth } = screen || {};
+	const position = { top: '100', left: availLeft - availLeft * .5 };
+	const result = await foundry.applications.api.DialogV2.wait({
+		form: { closeOnSubmit: true },
+		window: { title: 'Chronoball Command Center', position, },
+		buttons,
+		callback,
+		rejectClose: false,
+        id: 'chronoball',
+	})
+    if (!result) console.log('closed');
+    else {
+        console.log(result);
+        createDialog();
+    }
+}
 
 async function createBall() {
 	const ballTokenUuid = canvas.tokens.placeables.find((t) => t.identifier === 'chronoball')?.document.uuid;
