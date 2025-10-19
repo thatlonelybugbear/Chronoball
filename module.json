@@ -55,14 +55,14 @@
       "label": "Items",
       "path": "packs/chrononball/items",
       "type": "Item",
-      "system": "dnd5e",
+      "system": "dnd5e"
     },
     {
       "name": "Scenes",
       "label": "Scenes",
       "path": "packs/chrononball/scenes",
       "type": "Scene",
-      "system": "dnd5e",
+      "system": "dnd5e"
     }
   ],
   "bugs": "https://github.com/thatlonelybugbear/Chronoball/issues",
