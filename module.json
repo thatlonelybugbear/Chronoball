@@ -53,13 +53,13 @@
     {
       "name": "Items",
       "label": "Items",
-      "path": "packs/Chrononball/Items",
+      "path": "packs/chronoball/items",
       "type": "Item"
     },
     {
       "name": "Scenes",
       "label": "Scenes",
-      "path": "packs/Chrononball/Scenes",
+      "path": "packs/chronoball/scenes",
       "type": "Scene"
     }
   ],
