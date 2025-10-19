@@ -1,0 +1,5 @@
+2025/10/19-02:05:11.758 8c14 Delete type=3 #1
+2025/10/19-02:08:26.953 64bc Level-0 table #5: started
+2025/10/19-02:08:26.955 64bc Level-0 table #5: 8802 bytes OK
+2025/10/19-02:08:26.956 64bc Delete type=0 #3
+2025/10/19-02:08:26.958 64bc Manual compaction at level-0 from '!scenes!1evo4222aU3gMf7F' @ 72057594037927935 : 1 .. '!scenes.tokens.delta.items!1evo4222aU3gMf7F.JQslZ03Nw5tCmTrv.z4JevcIWcGAsIbSq.uJgFJHKGxZtKMZXC' @ 0 : 0; will stop at (end)
