@@ -1,6 +1,6 @@
 import Constants from './chronoball-constants.mjs';
 import Settings from './chronoball-settings.mjs';
-import { transferEverything, createItemPile, giveItem, addItems } from './chronoball-main.mjs'
+import { transferEverything, createItemPile, giveItem, addItems } from './chronoball-main.mjs';
 
 const settings = new Settings();
 
@@ -19,22 +19,25 @@ export async function createDialog() {
 
 	const callback = (event, button) => {
 		return { mode: button.dataset.action };
-	}
+	};
 	const { availLeft, availTop, availHeight, availWidth } = screen || {};
-	const position = { top: '100', left: availLeft - availLeft * .5 };
+	const position = { top: '100', left: availLeft - availLeft * 0.5 };
 	const result = await foundry.applications.api.DialogV2.wait({
 		form: { closeOnSubmit: true },
-		window: { title: 'Chronoball Command Center', position, },
+		window: { title: 'Chronoball Command Center', position },
 		buttons,
 		callback,
 		rejectClose: false,
-        id: 'chronoball',
-	})
-    if (!result) console.log('closed');
-    else {
-        console.log(result);
-        createDialog();
-    }
+		id: 'chronoball',
+	});
+	if (!result) console.log('closed');
+	else {
+		if (result === 'create') await createBall();
+		else if (result === 'drop') await dropBall({ actor });
+		else if (result === 'pick') await pickBall(actor);
+		else if (result === 'throw') await throwBall({ actor, token: actor.getActiveTokens()[0] });
+		createDialog();
+	}
 }
 
 async function createBall() {
@@ -44,7 +47,7 @@ async function createBall() {
 }
 
 async function dropBall({ spot, actor }) {
-	const ballItem = actor?.items.find((i) => i.identifier === 'chronoball') ?? await fromUuid(Constants.BALL_UUID);
+	const ballItem = actor?.items.find((i) => i.identifier === 'chronoball') ?? (await fromUuid(Constants.BALL_UUID));
 	const ballItemData = game.items.fromCompendium(ballItem);
 	const ownership = game.users.map((u) => ({ [u.id]: 3 }));
 	const options = {
@@ -65,6 +68,11 @@ async function giveBall({ target, source }) {
 	const item = source.items.find((i) => i.identifier === 'chronoball');
 	await addItems(target, [item]);
 	await item?.delete();
+}
+
+async function pickUpBall(actor) {
+	const ballTokenUuid = canvas.tokens.placeables.find((t) => t.identifier === 'chronoball')?.document.uuid;
+	await transferEverything(ballTokenUuid, actor);
 }
 
 async function throwBall({ actor, token }) {
