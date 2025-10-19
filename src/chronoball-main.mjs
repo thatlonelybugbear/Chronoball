@@ -30,6 +30,6 @@ function showTokenControlsButton(controls) {
 }
 
 function initializeVariables() {
-  if (!transferEverything || !createItemPile || !addItems) ui.notifications.error(Constants.MODULE_NAME + ': Make sure that Item Piles (and Item Piles d&d5e) module is enabled');
   ({ transferEverything, createItemPile, giveItem, addItems } = game.itempiles?.API || {});
+  if (!transferEverything || !createItemPile || !addItems) ui.notifications.error(Constants.MODULE_NAME + ': Make sure that Item Piles (and Item Piles d&d5e) module is enabled');
 }
