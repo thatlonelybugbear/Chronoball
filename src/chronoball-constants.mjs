@@ -4,4 +4,5 @@ export default class Constants {
   static TEAM_FLAG = 'team';
   static THROW_FLAVOR = 'Attempting to throw the ball, using';
   static BALL_UUID = '' // @to-do: replace the UUID from the compendium
+  static DIALOG_RENDERED = 'renderedDialog';
 }
